@@ -3,12 +3,6 @@
   var baseUrl = "<?= base_url() ?>";
   var empId = <?= isset($empId) ? $empId : "-1" ?>;
   var mode = "<?= $mode ?>";
-  <?php
-    $backUrl = base_url('public/employee/list');
-    if( $mode == 'edit' && isset($empId) ){
-        $backUrl = base_url('public/employee/info') . "?empId=" . $empId;
-    }
-  ?>
 </script>
 <div>
   <!-- load angularjs controller -->
@@ -21,7 +15,7 @@
 
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <md-button aria-label="Go Back" ng-href="<?= $backUrl ?>">
+        <md-button aria-label="Go Back" ng-href="<?= base_url('public/employee/list') ?>">
           Back
         </md-button>
         <?php if($mode == 'add'){?>

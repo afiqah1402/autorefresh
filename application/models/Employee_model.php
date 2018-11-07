@@ -17,6 +17,18 @@ class Employee_model extends CI_Model{
         }
     }
 
+    function getAllEmployee(){
+        $this->db->order_by("emp_id", "asc");
+        // $this->db->select("emp_id, first_name, last_name");
+        $query = $this->db->get('emp_info');
+
+        if($query->num_rows()>0){
+            return $query->result_array();
+        }else{
+            return FALSE;
+        }
+    }
+
     function getEmployeeInfoById( $empId ){
         $this->db->where( 'emp_id = ', $empId );
         $query = $this->db->get('emp_info');

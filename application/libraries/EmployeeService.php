@@ -14,7 +14,7 @@ class EmployeeService {
     }
 
     public function getAllEmp(){
-        $empData = $this->CI->emp->getAllEmployeeIdAndName();
+        $empData = $this->CI->emp->getAllEmployee();
 
         return $empData;
     }
