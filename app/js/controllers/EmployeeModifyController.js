@@ -13,8 +13,7 @@ app.controller("EmployeeModifyController", ['$scope', '$http', '$mdToast', 'Empl
         $scope.submit = function(){
             if(mode == 'add'){
                 EmployeeService.addEmployee($scope.emp).then(function(response){
-                    // $scope.employee = response.data;
-                    // console.log(17, response);
+                    
                     $scope.msg = response.data;
 
                     $mdToast.show({
@@ -29,8 +28,7 @@ app.controller("EmployeeModifyController", ['$scope', '$http', '$mdToast', 'Empl
                 });
             }else if(mode == 'edit'){
                 EmployeeService.editEmployeeDetails($scope.emp).then(function(response){
-                    // $scope.employee = response.data;
-                    // console.log(23, response);
+                    
                     $scope.msg = response.data;
 
                     $mdToast.show({
