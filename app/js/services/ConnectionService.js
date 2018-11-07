@@ -41,38 +41,12 @@ app.factory('ConnectionService', ['$rootScope', function($rootScope){
             }));
         },
 
-        addUpdatedData : function(data){
+        addUpdatedData : function(msg){
             
             $rootScope.$apply(function() {
                 $rootScope.dataUpdated = true;
-                $rootScope.cache.updatedData = data.data;
             });
-            
-            // this.employeeData = data.data;
-            // console.log(51, this.employeeData);
-            // console.log(52, data);
-
-            // switch(data.broadType){
-            //     case Broadcast.POST : this.addNewPost(data); break;
-            //     default : console.log("nothing to do");
-            // }
-
-            // EmployeeService.getEmployeeDetails(empId).then(function(response){
-            //     $scope.employee = response.data;
-            // });
         },
-
-        // addNewPost : function(data){
-            
-        //     var newPost = data.data;
-            
-        //     var appElement = document.querySelector('[ng-app=AutorefreshApp]');
-        //     var $rootScope = angular.element(appElement).scope();
-
-        //     $rootScope.$apply(function() {
-        //         $rootScope.posts.unshift(newPost);
-        //     });
-        // },
 
         addSystemMessage : function(msg){
             console.log(63, msg);

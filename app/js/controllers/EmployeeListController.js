@@ -1,5 +1,5 @@
-app.controller("EmployeeListController", ['$scope', '$interval', 'EmployeeService', 
-    function($scope, $interval, EmployeeService){
+app.controller("EmployeeListController", ['$scope', '$rootScope', 'EmployeeService', 'ConnectionService',
+    function($scope, $rootScope, EmployeeService, ConnectionService){
         $scope.moreDetails = {};
         $scope.toggleMore = function(index){
             if(!$scope.moreDetails[index]){
@@ -9,13 +9,22 @@ app.controller("EmployeeListController", ['$scope', '$interval', 'EmployeeServic
             $scope.moreDetails[index].moreLabel = $scope.moreDetails[index].less ? "Close" : "More";
         }
 
-        EmployeeService.getAllEmployee().then(function(response){
-            $scope.employees = response.data;
-        });
-
-        $interval(function(){
+        $scope.getEmpData = function(){
             EmployeeService.getAllEmployee().then(function(response){
                 $scope.employees = response.data;
             });
-        }, 5000);
+        }
+        
+        /*============================Websocket============================ */
+        $rootScope.dataUpdated = false;
+        ConnectionService.connection(Broadcast.BROADCAST_URL+":"+Broadcast.BROADCAST_PORT);
+
+        $rootScope.$watch('dataUpdated', function() {
+            console.log($rootScope.dataUpdated);
+            if($rootScope.dataUpdated){
+                $scope.getEmpData();
+                $rootScope.dataUpdated = false;
+            }
+        });
+        /*============================Websocket============================ */
 }]);
