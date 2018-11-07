@@ -1,19 +1,19 @@
 # autorefreshapp
 an auto refresh app sample
 
-1. clone and checkout master for interval solution and wssolution for websocket solution
+1. create database name: dummy_forfun and run dummy_forfun script
 
-2. create database name: dummy_forfun and run dummy_forfun script in script folder
+2. create tutorials folder in wamp/www 
 
-3. set virtual host to whatever name you like and change the base_url in config.php
+3. then create autorefreshapp folder inside it
 
-4. run composer install
+4. then clone this git into autorefreshapp folder
 
-5. go to url <base_url>/public/employee/list if success then all went well.
+5. set virtual host name: tutorials.local point to tutorials folder
 
-extra 
+6. run composer install
 
-6. for websocket run php appServer.php in wsservice/bin and refresh the page, you can see the command message shows that connection is successful
+7. go to url http://tutorials.local/autorefreshapp/employee/list if success then all went well
 
 this app is to show that we can update the view without refreshing the page in angularjs. 
 
