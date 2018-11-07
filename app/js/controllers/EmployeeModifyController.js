@@ -29,6 +29,8 @@ app.controller("EmployeeModifyController", ['$scope', '$http', '$mdToast', 'Empl
 
                     typeData = { broadType : Broadcast.POST, data : $scope.msg};
                     ConnectionService.updateData(typeData);
+                    // clearing all field after success add
+                    $scope.emp = {};
                 });
             }else if(mode == 'edit'){
                 EmployeeService.editEmployeeDetails($scope.emp).then(function(response){
