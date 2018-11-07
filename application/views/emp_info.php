@@ -6,9 +6,10 @@
 <div>
   <!-- load angularjs controller -->
   <script src="<?= base_url('/app/js/services/EmployeeService.js') ?>"></script>
+  <script src="<?= base_url('/app/js/services/ConnectionService.js') ?>"></script>
   <script src="<?= base_url('/app/js/controllers/EmployeeInfoController') ?>"></script>
 </div>
-<div ng-controller="EmployeeInfoController" ng-cloak="" layout-gt-sm="row" layout="column">
+<div ng-controller="EmployeeInfoController" ng-init="getEmpData()" ng-cloak="" layout-gt-sm="row" layout="column">
   <div flex-gt-sm="20" flex></div>
   <div flex-gt-sm="60" flex="" class="md-padding">
     <!-- <md-toolbar layout="row" class="md-hue-3">

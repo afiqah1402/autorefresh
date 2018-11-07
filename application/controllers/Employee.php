@@ -10,6 +10,10 @@ class Employee extends CI_Controller {
         $this->load->library('EmployeeService');
     }
 
+    public function index(){
+        echo "testing default controller";
+    }
+
 	public function readAll()
 	{
         $data = $this->employeeservice->getAllEmp();

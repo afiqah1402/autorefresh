@@ -1,5 +1,11 @@
-app.controller("EmployeeInfoController", ['$scope', '$http', '$interval', 'EmployeeService', 
-    function($scope, $http, $interval, EmployeeService){
+app.controller("EmployeeInfoController", ['$scope', '$http', '$interval', '$rootScope', 'EmployeeService', 'ConnectionService',
+    function($scope, $http, $interval, $rootScope, EmployeeService, ConnectionService){
+        $rootScope.dataUpdated = false;
+        $rootScope.cache = {
+            "updatedData": {}
+        };
+        ConnectionService.connection(Broadcast.BROADCAST_URL+":"+Broadcast.BROADCAST_PORT);
+
         $scope.showOrHide = "Show";
         $scope.showEmpDetails = false;
 
@@ -9,13 +15,25 @@ app.controller("EmployeeInfoController", ['$scope', '$http', '$interval', 'Emplo
             $scope.showEmpDetails = currShowOrHide ? false : true;
         }
 
-        EmployeeService.getEmployeeDetails(empId).then(function(response){
-            $scope.employee = response.data;
-        });
-
-        $interval(function(){
+        $scope.getEmpData = function(){
             EmployeeService.getEmployeeDetails(empId).then(function(response){
                 $scope.employee = response.data;
             });
-        }, 5000);
+        }
+
+        $rootScope.$watch('dataUpdated', function() {
+            if($rootScope.dataUpdated){
+                $scope.employee = $rootScope.cache.updatedData;
+                console.log(25, "data is updated", $rootScope.cache);
+                $rootScope.dataUpdated = false;
+            }
+        });
+
+        // $scope.getEmpData();
+
+        // $interval(function(){
+        //     EmployeeService.getEmployeeDetails(empId).then(function(response){
+        //         $scope.employee = response.data;
+        //     });
+        // }, 5000);
 }]);

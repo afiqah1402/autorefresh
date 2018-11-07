@@ -25,5 +25,13 @@
 </head>
 
 <body ng-app="AutorefreshApp" ng-cloak>
+<script>
+  // declaring global variable for data transfer from php to js
+  var baseUrl = "<?= base_url() ?>";
+  var Broadcast = {
+                    BROADCAST_URL : "<?= BROADCAST_URL; ?>",
+                    BROADCAST_PORT : "<?= BROADCAST_PORT; ?>",
+                };
+</script>
 
     

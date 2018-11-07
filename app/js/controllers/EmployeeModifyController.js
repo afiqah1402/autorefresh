@@ -1,5 +1,8 @@
-app.controller("EmployeeModifyController", ['$scope', '$http', '$mdToast', 'EmployeeService', 
-    function($scope, $http, $mdToast, EmployeeService){
+app.controller("EmployeeModifyController", ['$scope', '$http', '$mdToast', 'EmployeeService', 'ConnectionService',
+    function($scope, $http, $mdToast, EmployeeService, ConnectionService){
+
+        ConnectionService.connection(Broadcast.BROADCAST_URL+":"+Broadcast.BROADCAST_PORT);
+
         if(mode == 'edit'){
             EmployeeService.getEmployeeDetails(empId).then(function(response){
                 $scope.emp = response.data;
@@ -39,6 +42,9 @@ app.controller("EmployeeModifyController", ['$scope', '$http', '$mdToast', 'Empl
                             param    : $scope.msg
                         }
                     });
+
+                    var typeData = { broadType : Broadcast.POST, data : $scope.emp};
+                    ConnectionService.updateData(typeData);
                 });
             }
         }

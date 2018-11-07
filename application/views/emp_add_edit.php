@@ -13,6 +13,7 @@
 <div>
   <!-- load angularjs controller -->
   <script src="<?= base_url('/app/js/services/EmployeeService.js') ?>"></script>
+  <script src="<?= base_url('/app/js/services/ConnectionService.js') ?>"></script>
   <script src="<?= base_url('/app/js/controllers/EmployeeModifyController') ?>"></script>
 </div>
 <div ng-controller="EmployeeModifyController" ng-cloak="" layout-gt-sm="row" layout="column">
