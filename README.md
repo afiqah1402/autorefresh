@@ -1,17 +1,17 @@
 # autorefreshapp
 an auto refresh app sample
 
-1. create database name: dummy_forfun and run dummy_forfun script
+1. create tutorials folder in wamp/www 
 
-2. create tutorials folder in wamp/www 
+2. then create autorefreshapp folder inside it
 
-3. then create autorefreshapp folder inside it
+3. then clone this git into autorefreshapp folder
 
-4. then clone this git into autorefreshapp folder
+4. set virtual host name: tutorials.local point to tutorials folder
 
-5. set virtual host name: tutorials.local point to tutorials folder
+5. run composer install
 
-6. run composer install
+6. create database name: dummy_forfun and run dummy_forfun script
 
 7. go to url http://tutorials.local/autorefreshapp/employee/list if success then all went well
 
